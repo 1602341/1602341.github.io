@@ -28,8 +28,8 @@ function keyTyped() {
 
 function mousePressed() {
   let someBall = spawnBall();
-  someBall.x = mouse.X;
-  someBall.y = mouse.Y;
+  someBall.x = mouseX;
+  someBall.y = mouseY;
   ballArray.push(someBall); 
 }
 
