@@ -1,7 +1,8 @@
 # CS 30 
 
 ## Demos
-- [thing 1](where-it-is)
+- [Ball Object Demo](ball-object)
+- [Ball-Array](ball-array)
 
 ## Projects
 - [Array Project](array-project)
