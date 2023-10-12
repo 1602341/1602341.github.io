@@ -5,16 +5,16 @@
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
 
-let x;
-let y;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
   createCanvas(800, 600, WEBGL);
+  background(0);
+  let x = 0;
+  let y = 0;
 }
 
-function draw() {
-  background(0);
+function theSphere() {
   translate(0, 0, 0);
   push();
   rotateZ(frameCount * 0.01);
@@ -22,4 +22,9 @@ function draw() {
   rotateY(frameCount * 0.01);
   sphere(20);
   pop();
+  while 
+}
+
+function draw() {
+  theSphere();
 }
