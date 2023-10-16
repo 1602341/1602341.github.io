@@ -5,8 +5,8 @@
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
 
-//let theSphere = [];
 //let state = "startMode"
+//let petalArray = [];
 
 let x = 0;
 let y = 0;
@@ -31,19 +31,20 @@ function moveSphere() {
   // }
 
 }
-function spawnPetals() {
-  if keyPressed() {
-    thePetal();
-  }
-}
+// function spawnPetals() {
+//   if keyPressed() {
+//     thePetal();
+//   }
+// }
 
 function thePetal() {
   fill(255);
-  arc(100, 100, width/4, height/2, PI, TWO_PI);
-  x += 10
-  y += 10
-  z += 5
-}
+  arc(200, 200, width/4, height/2, PI, TWO_PI);
+  rotate(45);
+//   x += 10;
+//   y += 10;
+//   z += 5;
+ }
 
 function theSphere() {
   translate(0, 0, 0);
@@ -55,6 +56,18 @@ function theSphere() {
   pop();
   //moveSphere()
 }
+function spawnPetal() {
+  let thePetal = {
+    x: 0,
+    y: 0,
+    r: random(255),
+    g: random(255),
+    b: random(255),
+  }
+
+  return thePetal;
+}
+
 
 function draw() {
   theSphere();
