@@ -8,8 +8,7 @@
 //let state = "startMode"
 //let petalArray = [];
 
-let x = 0;
-let y = 0;
+let sphereArray = [];
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -37,39 +36,38 @@ function moveSphere() {
 //   }
 // }
 
-function thePetal() {
-  fill(255);
-  arc(200, 200, width/4, height/2, PI, TWO_PI);
-  rotate(45);
-//   x += 10;
-//   y += 10;
-//   z += 5;
- }
 
-function theSphere() {
-  translate(0, 0, 0);
-  push();
-  rotateZ(frameCount * 0.01);
-  rotateX(frameCount * 0.01);
-  rotateY(frameCount * 0.01);
-  sphere(20);
-  pop();
-  //moveSphere()
-}
-function spawnPetal() {
-  let thePetal = {
-    x: 0,
-    y: 0,
-    r: random(255),
-    g: random(255),
-    b: random(255),
+function spawnSpheres() {
+  let sphere = {
+    x: z * cos(angle),
+    y: z * sin(angle),
+    color: color(random(255), random(255), random(255)),
+    dx: 5,
+    dy: 5,
   }
-
-  return thePetal;
+  
+  sphereArray.push(sphere);
+}
+function drawSpiral() {
+  let dir = atan2(y - height / 2, x - width / 2);
+  x += cos(dir + 90) * dx;
+  y += sin(dir + 90) * dy;
 }
 
 
 function draw() {
-  theSphere();
-  thePetal();
+  for (let theSphere of sphereArray) {
+    fill(theSphere.color);
+    translate(0, 0, 0);
+    push();
+    rotateZ(frameCount * 0.01);
+    rotateX(frameCount * 0.01);
+    rotateY(frameCount * 0.01);
+    sphere(20);
+    pop();
+    fill(theSphere.color);
+    translate(width/2, height/2);
+    drawSpiral();
+    
+  }
 }
