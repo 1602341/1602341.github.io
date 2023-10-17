@@ -43,7 +43,7 @@ function spawnSpheres() {
     offset: 1,
     alternate: 0,
   };
-sphereArray.push(sphere);
+return sphere;
 }
 // function drawSpiral() {
 //   let dir = atan2(y - height / 2, x - width / 2);
