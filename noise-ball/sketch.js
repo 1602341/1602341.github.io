@@ -38,6 +38,5 @@ function spawnBall() {
     color: color(random(255), random(255), random(255), random(255)),
     time: random(1000),
   };
- ballArray.push(ball);
-  
+ ballArray.push(ball);  
 }
