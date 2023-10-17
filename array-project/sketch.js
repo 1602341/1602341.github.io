@@ -1,6 +1,6 @@
 // Array Project
 // Natalie Woo
-// October 19. 2023
+// October 19, 2023
 //
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
@@ -13,6 +13,7 @@ let x = 0;
 let y = 0;
 let growRadius;
 let step;
+let grow;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -30,6 +31,8 @@ function keyTyped() {
     // someSphere.y = (y + sin(dir + 90) * 5);
     sphereArray.push(someSphere); 
       
+  }
+}
 
 function spawnSpheres() {
   let sphere = {
@@ -41,7 +44,6 @@ function spawnSpheres() {
     grow: 1,
     growStep: 0.002, 
     offset: 1,
-    alternate: 0,
   };
 return sphere;
 }
@@ -67,22 +69,21 @@ function draw() {
   if (grow < 0.5 ) { 
     growStep = 0.002;
   }
-  for (var i = 0; i < 1400; i=i+2) {
+  for (let i = 0; i < 1400; i=i+2) {
     offset = offset + 0.0001;
     radius = 2 + (i/2.25);
     circleRadius = 45 + (i/30);
     growRadius = 0;
     growRadius = growRadius + 0.02;
     radius = radius + growRadius;
-    xCircle = middle + cos((i)-offset) * radius;
-    yCircle = middle - sin((i)-(offset)) * radius;
+    sphere.x = middle + cos((i)-offset) * radius;
+    sphere.y = middle - sin((i)-(offset)) * radius;
     push();
     translate (xCircle, yCircle);
     fill(theSphere.color);
     rotate((-20*cos(i+step)) + abs(12*sin(i+step)));
-    sphere(30);
+    sphere(radius);
     pop();
-     }
-    }
   }
 }
+
