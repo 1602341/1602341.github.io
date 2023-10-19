@@ -13,7 +13,8 @@
 
 //sets up the array and initializes one value
 let sphereArray = [];
-let growRadius;
+let growRadius; 
+let light = 500;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -25,6 +26,15 @@ function setup() {
   let someSphere = spawnSpheres();
   sphereArray.push(someSphere); 
 }
+
+// function keyIsDown() {
+//   if (keyIsDown(UP_ARROW)) {
+//     light = light + 1
+//   }
+//   else if (keyIsDown(DOWN_ARROW)) {
+//     light = light - 1
+//   }
+// }
 
 //function to attach object notaions to
 function spawnSpheres() {
@@ -39,7 +49,16 @@ function spawnSpheres() {
 return sphere;
 }
 
+function keyPressed() {
+  if (keyIsDown(UP_ARROW) && light < 1000) {
+    light = light + 5
+  }
+  else if (keyIsDown(DOWN_ARROW) && light > 0) {
+    light = light - 5
+  }
+}
 function draw() {
+  keyPressed()
   //pulls values from the array
   for (let theSphere of sphereArray) {
     //sets position for the initial sphere
@@ -60,7 +79,7 @@ function draw() {
       //sets up the lighting and texture of the spheres
       normalMaterial()
       specularMaterial(theSphere.color);
-      pointLight(247, 230, 166, mouseX - width/2, mouseY - width/2, 100);
+      pointLight(247, 230, 166, mouseX - width/2, mouseY - width/2, light);
       //spawns the spheres
       sphere(sphereRadius);
       pop();
