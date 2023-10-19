@@ -11,6 +11,11 @@
 //Reference for 3D is WEBGL
 //https://p5js.org/examples/3d-geometries.html
 
+//Description:
+// - Used spheres to create a 3D spiral
+// - When the mouse is clicked the spiral will change colours
+// - When the Up and Down arrow keys are pressed the lighting changes
+
 //sets up the array and initializes one value
 let sphereArray = [];
 let growRadius; 
@@ -27,15 +32,6 @@ function setup() {
   sphereArray.push(someSphere); 
 }
 
-// function keyIsDown() {
-//   if (keyIsDown(UP_ARROW)) {
-//     light = light + 1
-//   }
-//   else if (keyIsDown(DOWN_ARROW)) {
-//     light = light - 1
-//   }
-// }
-
 //function to attach object notaions to
 function spawnSpheres() {
   let sphere = {
@@ -49,12 +45,13 @@ function spawnSpheres() {
 return sphere;
 }
 
+//changes the birghtness of the light when the arrow keys are pressed
 function keyPressed() {
-  if (keyIsDown(UP_ARROW) && light < 1000) {
-    light = light + 5
+  if (keyIsDown(UP_ARROW) && light <= 1000) {
+    light = light + 20
   }
-  else if (keyIsDown(DOWN_ARROW) && light > 0) {
-    light = light - 5
+  else if (keyIsDown(DOWN_ARROW) && light >= 0) {
+    light = light - 20
   }
 }
 function draw() {
