@@ -6,6 +6,7 @@
 - [Perlin Noise Ball](noise-ball)
 - [Sounds-and-Images](sound-image)
 - [Terrain Generation](terrain-gen)
+- [Draw Grid](2d-grid)
 
 ## Projects
 - [Array Project](array-project)
