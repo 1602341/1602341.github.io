@@ -7,6 +7,7 @@
 - [Sounds-and-Images](sound-image)
 - [Terrain Generation](terrain-gen)
 - [Draw Grid](2d-grid)
+- [Grid Neighbors](grid-neighbors)
 
 ## Projects
 - [Array Project](array-project)
