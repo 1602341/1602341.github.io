@@ -4,7 +4,7 @@
 // let grid = [[1, 0, 0, 1], [0, 0, 1, 1], [1, 1, 0, 1], [0, 1, 1, 1]];
 let grid;
 let cellSize;
-const GRID_SIZE = 50;
+const GRID_SIZE = 10;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -23,25 +23,23 @@ function draw() {
   // mouseClicked();
 }
 
-// function mouseClicked() {
-//   if (key === "r") {
-//     grid = generateRandomGrid(GRID_SIZE, GRID_SIZE)
-//   }
-//   else if (key === "e") {
-//     grid = generateEmptyGrid(GRID_SIZE, GRID_SIZE)
-//   }
-// }
+function keyTyped() {
+  if (key === "r") {
+    grid = generateRandomGrid(GRID_SIZE, GRID_SIZE);
+  }
+  else if (key === "e") {
+    grid = generateEmptyGrid(GRID_SIZE, GRID_SIZE);
+  }
+}
 
-function mouseClicked() {
-  for (let y = 0; y < GRID_SIZE; y++) {
-    for (let x = 0; x < GRID_SIZE; x++) {
-      if (grid[y][x] === 0) {
-        fill("white");
-      }
-      if (grid[y][x] === 1) {
-        fill("black");
-      }
-    }  
+function mousePressed() {
+  let y = Math.floor(mouseY/cellSize);
+  let x = Math.floor(mouseX/cellSize);
+  if (grid[y][x] === 0) {
+    grid[y][x] = 1;  
+  }
+  else {
+  grid[y][x] = 0;
   }
 }
 
