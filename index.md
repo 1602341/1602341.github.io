@@ -8,6 +8,7 @@
 - [Terrain Generation](terrain-gen)
 - [Draw Grid](2d-grid)
 - [Grid Neighbors](grid-neighbors)
+- [Game of Life](game-life)
 
 ## Projects
 - [Array Project](array-project)
