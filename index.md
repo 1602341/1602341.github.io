@@ -12,3 +12,4 @@
 
 ## Projects
 - [Array Project](array-project)
+- [2D Grid Project](2d-grid-project)
