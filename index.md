@@ -9,6 +9,7 @@
 - [Draw Grid](2d-grid)
 - [Grid Neighbors](grid-neighbors)
 - [Game of Life](game-life)
+- [Character in Grid](character-in-grid)
 
 ## Projects
 - [Array Project](array-project)

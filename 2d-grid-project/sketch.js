@@ -1,6 +1,6 @@
-// Sudoku
+// Ultimate X's and O's
 // Natalie Woo
-// October 27, 2023
+// November 13, 2023
 //
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
@@ -9,13 +9,20 @@ let grid;
 let section;
 let cellSize;
 let sectionSize;
-let xPlayer;
-let yPlayer;
+let playerX
+let playerO;
+let turn;
 const GRID_SIZE = 9;
 const SECTION_SIZE = 3;
 
+function preload() {
+  playerX = loadImage("x.png");
+  playerO = loadImage("o.png");
+}
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  imageMode(CENTER)
   if (height > width) {
     cellSize = width/GRID_SIZE;
   }
@@ -35,6 +42,8 @@ function draw() {
   background(220);
   displayNumberGrid();
   displaySectionGrid();
+  image(playerX, 28, 28, playerX.width/4, playerX.height/4);
+  image(playerO, 80, 80, playerO.width/2.5, playerO.height/2.5);
 }
 
 function keyTyped() {
@@ -47,7 +56,9 @@ function keyTyped() {
 }
 
 function mousePressed() {
-
+  if mouseClicked() {
+    image(playerX, 28, 28, playerX.width/4, playerX.height/4);
+  }
 }
 
 function displayNumberGrid() {
