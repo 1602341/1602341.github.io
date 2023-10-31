@@ -9,11 +9,12 @@ let grid;
 let section;
 let cellSize;
 let sectionSize;
-let playerX
+let playerX;
 let playerO;
 let turn;
 const GRID_SIZE = 9;
 const SECTION_SIZE = 3;
+
 
 function preload() {
   playerX = loadImage("x.png");
@@ -21,7 +22,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(600, 600);
   imageMode(CENTER)
   if (height > width) {
     cellSize = width/GRID_SIZE;
@@ -42,22 +43,20 @@ function draw() {
   background(220);
   displayNumberGrid();
   displaySectionGrid();
-  image(playerX, 28, 28, playerX.width/4, playerX.height/4);
-  image(playerO, 80, 80, playerO.width/2.5, playerO.height/2.5);
+  //image(playerX, 28, 28, playerX.width/4, playerX.height/4);
+  //image(playerO, 80, 80, playerO.width/2.5, playerO.height/2.5);
+  mouseClicked();
 }
 
-function keyTyped() {
-  if (key === "x") {
-    
-  }
-  else if (key === "o") {
-    
+function mouseClicked() {
+  if (mouseX < width/GRID_SIZE && mouseX > 0 && mouseY < height/GRID_SIZE && mouseY > 0 ) {
+  image(playerX, 34, 34, playerX.width/4, playerX.height/4);
   }
 }
 
-function mousePressed() {
-  if mouseClicked() {
-    image(playerX, 28, 28, playerX.width/4, playerX.height/4);
+function gridFinder(x, y) {
+  if (x >= 0 && x < GRID_SIZE && y >= 0 && y < GRID_SIZE) {
+
   }
 }
 
