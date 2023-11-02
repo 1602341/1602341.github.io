@@ -11,8 +11,9 @@ let cellSize;
 let sectionSize;
 let playerX;
 let playerO;
-let turnX;
-let turnO;
+let theTurn = 0;
+let turnX = 0;
+let turnO = 1;
 const GRID_SIZE = 9;
 const SECTION_SIZE = 3;
 
@@ -24,7 +25,7 @@ function preload() {
 
 function setup() {
   createCanvas(windowWidth * 0.8, windowHeight * 0.8);
-  imageMode(CENTER)
+  imageMode(CORNER)
   if (height > width) {
     cellSize = width/GRID_SIZE;
   }
@@ -62,24 +63,20 @@ function draw() {
 
 function boxFinder(x, y) {
   if (x >= 0 && x < GRID_SIZE && y >= 0 && y < GRID_SIZE) {
-      if (grid[y][x] === turnX) {
+      if (grid[y][x] === 0) {
         grid[y][x] = turnO;
       }
-      else if (grid[y][x] === turnO) {
+      else if (grid[y][x] === 1) {
         grid[y][x] = turnX;
       }
   }
 }
 
-// <<<<<<< HEAD
-// function mouseClicked() {
-//   image(playerX, grid[mouseY][mouseX], grid[mouseY][mouseX], playerX.width/4, playerX.height/4);
-// =======
+
 function mousePressed() {
   let y = Math.floor(mouseY/cellSize);
   let x = Math.floor(mouseX/cellSize);
   boxFinder(x, y) 
-// >>>>>>> f32bf55f35725067ef7a2d93c3be3bfbe31b43d4
 }
 
 function displayMainGrid() {
@@ -89,7 +86,7 @@ function displayMainGrid() {
       strokeWeight(5)
       rect(x * cellSize, y * cellSize, cellSize, cellSize);
       if (grid[y][x] === turnX) {
-        image(playerX, x, y, playerX.width/4, playerX.height/4);
+        image(playerX, x, y, GRID_SIZE.width/9, GRID_SIZE.height/9);
       }
       else if (grid[y][x] === turnO) {
         image(playerO, x, y, playerO.width/4, playerO.height/4);
