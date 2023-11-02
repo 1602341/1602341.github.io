@@ -42,8 +42,8 @@ function draw() {
   background(220);
   displayNumberGrid();
   displaySectionGrid();
-  image(playerX, 28, 28, playerX.width/4, playerX.height/4);
-  image(playerO, 80, 80, playerO.width/2.5, playerO.height/2.5);
+//   image(playerX, 28, 28, playerX.width/4, playerX.height/4);
+//   image(playerO, 80, 80, playerO.width/2.5, playerO.height/2.5);
 }
 
 function keyTyped() {
@@ -55,10 +55,8 @@ function keyTyped() {
   }
 }
 
-function mousePressed() {
-  if mouseClicked() {
-    image(playerX, 28, 28, playerX.width/4, playerX.height/4);
-  }
+function mouseClicked() {
+  image(playerX, grid[mouseY][mouseX], grid[mouseY][mouseX], playerX.width/4, playerX.height/4);
 }
 
 function displayNumberGrid() {
