@@ -24,7 +24,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(windowWidth * 0.8, windowHeight * 0.8);
+  createCanvas(800, 800);
   imageMode(CORNER)
   if (height > width) {
     cellSize = width/GRID_SIZE;
@@ -73,7 +73,7 @@ function boxFinder(x, y) {
 }
 
 
-function mousePressed() {
+function mouseClicked() {
   let y = Math.floor(mouseY/cellSize);
   let x = Math.floor(mouseX/cellSize);
   boxFinder(x, y) 
@@ -86,10 +86,10 @@ function displayMainGrid() {
       strokeWeight(5)
       rect(x * cellSize, y * cellSize, cellSize, cellSize);
       if (grid[y][x] === turnX) {
-        image(playerX, x, y, GRID_SIZE.width/9, GRID_SIZE.height/9);
+        image(playerX, x * cellSize, y * cellSize, width/10, height/10);
       }
       else if (grid[y][x] === turnO) {
-        image(playerO, x, y, playerO.width/4, playerO.height/4);
+        image(playerO, x * cellSize, y * cellSize, width/8, height/8);
       }
     }
   }
