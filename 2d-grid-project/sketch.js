@@ -5,15 +5,21 @@
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
 
+//Resources
+//https://editor.p5js.org/rajpeaks/sketches/Skk7r8r1V
+
+let i;
+let n;
 let grid;
 let section;
 let cellSize;
 let sectionSize;
 let playerX;
 let playerO;
-let theTurn = 0;
+let theTurn;
 let turnX = 0;
 let turnO = 1;
+let state = "start"
 const GRID_SIZE = 9;
 const SECTION_SIZE = 3;
 
@@ -63,34 +69,68 @@ function draw() {
 
 function boxFinder(x, y) {
   if (x >= 0 && x < GRID_SIZE && y >= 0 && y < GRID_SIZE) {
-      if (grid[y][x] === 0) {
+      if (grid[y][x] === turnX) {
         grid[y][x] = turnO;
       }
-      else if (grid[y][x] === 1) {
+      else if (grid[y][x] === turnO) {
         grid[y][x] = turnX;
       }
   }
 }
 
-
 function mouseClicked() {
   let y = Math.floor(mouseY/cellSize);
   let x = Math.floor(mouseX/cellSize);
-  boxFinder(x, y) 
+  let i = Math.floor(mouseY/sectionSize);
+  let n = Math.floor(mouseX/sectionSize);
+  boxFinder(x, y)
+  if (state === "start") {
+    //theTurn = "turnX";
+    //if (state === "turnX") {
+        state = "turnO"
+    //}
+    //else if (state === "turnO") {
+      //state = "turnX"
+    //}
+    // if (theTurn === "turnX") {
+    //   displayMainGrid()
+    //   theTurn = "turnO";
+    // }
+    // else if (theTurn === "turnO"){
+    //   displayMainGrid()
+    //   theTurn = "turnX";
+    // }
+  }
 }
+
 
 function displayMainGrid() {
   for (let y = 0; y < GRID_SIZE; y++) {
     for (let x = 0; x < GRID_SIZE; x++) {
-      fill("white");
       strokeWeight(5)
       rect(x * cellSize, y * cellSize, cellSize, cellSize);
-      if (grid[y][x] === turnX) {
-        image(playerX, x * cellSize, y * cellSize, width/10, height/10);
+      if (state === "turnX") {
+        if (grid[y][x] === turnX) {
+          image(playerO, x * cellSize, y * cellSize, width/9, height/9);
+          //theTurn === "turnO"
+          state = "turnO"
+          //rect(i * cellSize, n * cellSize, cellSize, cellSize);
+          //rect(i * sectionSize, n * sectionSize, sectionSize, sectionSize);
+        }
       }
-      else if (grid[y][x] === turnO) {
-        image(playerO, x * cellSize, y * cellSize, width/8, height/8);
-      }
+    
+      if (state === "turnO") {
+        if (grid[y][x] === turnO) {
+          image(playerX, x * cellSize, y * cellSize, width/9, height/9);
+          state === "turnX"
+          //fill("grey")
+          //rect(0, 0, width/3, height/3);
+        } 
+        //rect(i * sectionSize, n * sectionSize, sectionSize, sectionSize);
+        // else if (grid[y][x] === 0) {
+          //   image(playerO, x * cellSize, y * cellSize, width/9, height/9);
+          // } 
+        }
     }
   }
 }
@@ -98,10 +138,24 @@ function displayMainGrid() {
 function displaySectionGrid() {
   for (let y = 0; y < SECTION_SIZE; y++) {
     for (let x = 0; x < SECTION_SIZE; x++) {
-      fill(0, 0, 0, 0);
+      fill(0, 0, 30, 20);
       strokeWeight(10);
       //rect(x * cellSize, y * cellSize, cellSize, cellSize);
       rect(x * sectionSize, y * sectionSize, sectionSize, sectionSize);
+      // if (theTurn === "turnX") {
+      //   if (grid[y][x] === 0) {
+      //     theTurn === "turnX"
+      //     fill("grey")
+      //     rect(i * sectionSize, n * sectionSize, sectionSize, sectionSize);
+      //   }
+      // }
+      // else if (theTurn === "turnO") {
+      //   if (grid[y][x] === 1) {
+      //     theTurn === "turnO"
+      //     fill("grey")
+      //     rect(i * sectionSize, n * sectionSize, sectionSize, sectionSize);
+      //   } 
+      // }
     }
   }  
 }
