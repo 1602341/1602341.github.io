@@ -7,6 +7,11 @@
 
 //Resources
 //https://editor.p5js.org/rajpeaks/sketches/Skk7r8r1V
+//
+//Minimax
+//https://www.youtube.com/watch?v=trKjYdBASyQ
+//https://thecodingtrain.com/challenges/154-tic-tac-toe-minimax
+//https://editor.p5js.org/codingtrain/sketches/0zyUhZdJD
 
 let i;
 let n;
@@ -19,7 +24,9 @@ let playerO;
 let theTurn;
 let turnX = 0;
 let turnO = 1;
-let state = "start"
+let ai = "aiturnX";
+let human = "humanturnO";
+let state = "twoPlayer"
 const GRID_SIZE = 9;
 const SECTION_SIZE = 3;
 
@@ -47,25 +54,23 @@ function setup() {
   grid = generateEmptyGrid(GRID_SIZE, GRID_SIZE);
 }
 
+function miniMax() {
+  if (state === "ai") {
+    for (let i = 0; i < 9; i++) {
+      for (let j = 0; j < 9; j++ ) {
+        if (grid[j][i] === '') {
+          
+        }
+      }
+    }
+  }
+}
+
 function draw() {
   background(220);
   displayMainGrid();
   displaySectionGrid();
-// <<<<<<< HEAD
-//   image(playerX, 28, 28, playerX.width/4, playerX.height/4);
-//   image(playerO, 80, 80, playerO.width/2.5, playerO.height/2.5);
-// =======
-  //image(playerX, 28, 28, playerX.width/4, playerX.height/4);
-  //image(playerO, 80, 80, playerO.width/2.5, playerO.height/2.5);
-  // mouseClicked();
-// >>>>>>> f32bf55f35725067ef7a2d93c3be3bfbe31b43d4
 }
-
-// function mouseClicked() {
-//   if (mouseX < width/GRID_SIZE && mouseX > 0 && mouseY < height/GRID_SIZE && mouseY > 0 ) {
-//   image(playerX, 34, 34, playerX.width/4, playerX.height/4);
-//   }
-// }
 
 function boxFinder(x, y) {
   if (x >= 0 && x < GRID_SIZE && y >= 0 && y < GRID_SIZE) {
@@ -84,7 +89,7 @@ function mouseClicked() {
   let i = Math.floor(mouseY/sectionSize);
   let n = Math.floor(mouseX/sectionSize);
   boxFinder(x, y)
-  if (state === "start") {
+  if (state === "twoPlayer") {
     //theTurn = "turnX";
     //if (state === "turnX") {
         state = "turnO"
