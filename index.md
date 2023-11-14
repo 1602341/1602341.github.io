@@ -10,6 +10,7 @@
 - [Grid Neighbors](grid-neighbors)
 - [Game of Life](game-life)
 - [Character in Grid](character-in-grid)
+- [Dog OOP Demo](dog-oop)
 
 ## Projects
 - [Array Project](array-project)
