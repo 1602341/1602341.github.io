@@ -11,6 +11,7 @@
 - [Game of Life](game-life)
 - [Character in Grid](character-in-grid)
 - [Dog OOP Demo](dog-oop)
+- [Walker OOP Demo](walker-oop)
 
 ## Projects
 - [Array Project](array-project)
