@@ -12,6 +12,7 @@
 - [Character in Grid](character-in-grid)
 - [Dog OOP Demo](dog-oop)
 - [Walker OOP Demo](walker-oop)
+- [OOP Ball Bouncing](ball-bouncing-oop)
 
 ## Projects
 - [Array Project](array-project)
