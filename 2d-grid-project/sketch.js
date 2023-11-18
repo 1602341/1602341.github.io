@@ -21,6 +21,8 @@ let turn;
 let human;
 let ai;
 let player = human;
+let playerX;
+let playerO;
 // let ai = "X";
 // let human = "O";
 let state = "startScreen"
@@ -29,6 +31,7 @@ const GRID_SIZE = 3;
 
 
 function preload() {
+  //attaches the images used for the x and o
   playerX = loadImage("x.png");
   playerO = loadImage("o.png");
 }
@@ -53,7 +56,7 @@ function setup() {
 }
 
 function find3(a, b, c) {
-  return a === b && b === c && a!== '';
+  return a === b && b === c && a !== '';
 }
 
 // function findWinner() {
@@ -68,8 +71,10 @@ function checkWinner() {
       if (find3(grid[y][0], grid[y][1], grid[y][2])) {
         winner = grid[y][0];
       }
+    }
+    for (let y = 0; y < GRID_SIZE; y++) {
       //vertical
-      else if (find3(grid[0][y], grid[1][y], grid[2][y])) {
+      if (find3(grid[0][y], grid[1][y], grid[2][y])) {
         winner = grid[0][y];
       }
     }
@@ -106,6 +111,13 @@ function mousePressed() {
       turn = human
     }
   }
+  if (state === "singlePlayer") {
+    if (player === human) {
+      let y = Math.floor(mouseY/cellSize);
+      let x = Math.floor(mouseX/cellSize);
+      boxFinder(x, y)
+    }
+  }
 }
 
 function start() {
@@ -135,28 +147,22 @@ function isInRect(x, y, top, bottom, left, right) {
 }
 
 function boxFinder(x, y) {
-  if (state === "singlePlayer") {
-        grid[y][x] = ai;
+  // if (state === "singlePlayer") {
+    grid[y][x] = ai;
     if (x >= 0 && x < GRID_SIZE && y >= 0 && y < GRID_SIZE) {
       if (grid[y][x] === '') {
-        bestMove();
         grid[y][x] = ai;
-      }
-      else if (grid[y][x] === ai) {
+        player = human;
         bestMove();
-        grid[y][x] = human;
       }
+      // else if (grid[y][x] === ai) {
+      //   grid[y][x] = human;
+      //   player = ai;
+      //   bestMove();
+      // }
     }
   }
-}
-
-function mouseClicked() {
-  let y = Math.floor(mouseY/cellSize);
-  let x = Math.floor(mouseX/cellSize);
-  // let i = Math.floor(mouseY/sectionSize);
-  // let n = Math.floor(mouseX/sectionSize);
-  boxFinder(x, y)
-}
+//}
 
 function bestMove() {
   let bestScore = -Infinity;
@@ -165,11 +171,11 @@ function bestMove() {
     for (let x = 0; x < GRID_SIZE; x++) {
       if (grid[y][x] === '') {
         grid[y][x] = ai;
-        let score = miniMax(grid);
+        let score = miniMax(grid, 0, false);
         grid[y][x] = '';
         if (score > bestScore) {
           bestScore = score;
-          move = { y, x };
+          move = { y, x }
           grid[move.y][move.x] = ai;
           player = human;
         }
@@ -186,7 +192,7 @@ let scores = {
 
 function miniMax(grid, depth, maximizing) {
   let result = checkWinner();
-  if (state === "startScreen") {
+  //if (state === "startScreen") {
     if (result !== null) {
       return scores[result];
     }
@@ -209,7 +215,6 @@ function miniMax(grid, depth, maximizing) {
       let bestScore = Infinity;
       for (let y = 0; y < GRID_SIZE; y++) {
         for (let x = 0; x < 3; x++) {
-          // Is the spot available?
           if (grid[y][x] == '') {
             grid[y][x] = human;
             let score = miniMax(grid, depth + 1, true);
@@ -221,7 +226,7 @@ function miniMax(grid, depth, maximizing) {
       return bestScore;
     }
   }
-}
+//}
 
 
 function displayMainGrid() {
@@ -231,10 +236,12 @@ function displayMainGrid() {
       rect(x * cellSize, y * cellSize, cellSize, cellSize);
       let spot = grid[y][x];
       if (spot === human) {
-        image(playerX, x * cellSize, y * cellSize, width/3, height/3); 
+        image(playerO, x * cellSize, y * cellSize, width/3, height/3);
+        spot = ai;
       }
       else if (spot === ai) {
-        image(playerO, x * cellSize, y * cellSize, width/3, height/3);
+        image(playerX, x * cellSize, y * cellSize, width/3, height/3); 
+        spot = human;
       }
       // if (turn === "turnX") {
       //   if (grid[y][x] === "turnX") {
@@ -250,12 +257,14 @@ function displayMainGrid() {
       // }
     }
   }
-//   let result = checkWinner();
-//   if (result !== null) {
-//     noLoop();
-//     state = "endScreen";
-//   }
- }
+  let result = checkWinner();
+  if (result !== null) {
+    noLoop();
+    background(220)
+    fill("black")
+    text('The Winner Is: ' + result, width/4, height/3);
+   }
+  }
 
 // function displaySectionGrid() {
 //   //if (state === singlePlayer || state === multiplayer) {
