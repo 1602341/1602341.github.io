@@ -14,6 +14,7 @@
 - [Walker OOP Demo](walker-oop)
 - [OOP Ball Bouncing](ball-bouncing-oop)
 - [Perlin Noise OOP](perlin-noise-oop)
+- [Firework OOP](firework-oop)
 
 ## Projects
 - [Array Project](array-project)
