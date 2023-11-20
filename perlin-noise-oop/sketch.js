@@ -8,10 +8,13 @@ function setup() {
 
 function draw() {
   background(220);
+  //draws lines first
   for (let point of points) {
     point.update();
-    point.display();
     point.connectTo(points);
+  }
+  for (let point of points) {
+    point.display();
   }
 }
 
@@ -62,6 +65,18 @@ class MovingPoint {
     }
     if (this.y > height) {
       this.y -= height;
+    }
+
+    //adjust size
+    let mouseDistance = dist(this.x, this.y, mouseX, mouseY);
+    if (mouseDistance < this.reach) {
+      //make circle bigger
+      let theSize = map(mouseDistance, 0, this.reach, 500, 15);
+      this.radius = theSize;
+    }
+    else {
+      //make circle regular size
+      this.radius =  15;
     }
   }
 
