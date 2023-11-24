@@ -15,6 +15,7 @@
 - [OOP Ball Bouncing](ball-bouncing-oop)
 - [Perlin Noise OOP](perlin-noise-oop)
 - [Firework OOP](firework-oop)
+- [Inheritance Demo](inheritance)
 
 ## Projects
 - [Array Project](array-project)
