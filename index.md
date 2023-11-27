@@ -16,6 +16,7 @@
 - [Perlin Noise OOP](perlin-noise-oop)
 - [Firework OOP](firework-oop)
 - [Inheritance Demo](inheritance)
+- [Collision Demo](collision)
 
 ## Projects
 - [Array Project](array-project)
