@@ -3,7 +3,7 @@
 
 let sA, sB, j;
 function setup() {
-	createCanvas(1000, 1000);
+	createCanvas(windowWidth, windowHeight);
 	world.gravity.y = 10;
 
 	sA = new Sprite(250, 0, 10, 50, 'k');
