@@ -18,6 +18,7 @@
 - [Inheritance Demo](inheritance)
 - [Collision Demo](collision)
 - [p5.play template](p5-play)
+- [Recursive Cirlces](circle-recursion)
 
 ## Projects
 - [Array Project](array-project)
